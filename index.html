@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToteBags - Simpel dan Stylish</title>
+    <!-- Memuat Tailwind CSS dari CDN untuk kemudahan penggunaan -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Tailwind untuk menggunakan font Inter secara default dan warna kustom dari logo -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        // Menambahkan warna kustom dari logo
+                        'brand-primary': '#B34E84', // Ungu kemerahan dari logo
+                        'brand-secondary': '#8A3B66', // Nuansa lebih gelap dari warna primer
+                        'brand-light': '#F8F0F4', // Nuansa lebih terang dari warna primer
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Memuat font Inter dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Gaya kustom minimalis jika diperlukan, meskipun sebagian besar akan menggunakan Tailwind */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8; /* Warna latar belakang sangat terang */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+    <!-- Header/Navigation Bar -->
+    <header class="bg-white shadow-sm py-4 px-6 md:px-12 flex justify-between items-center rounded-b-lg">
+        <div class="text-2xl font-bold text-gray-900">
+            <!-- Nama Brand atau Logo, kini menggunakan gambar logo -->
+            <img src="images/logo.png" alt="Logo canVas" class="h-8 md:h-10 inline-block">
+        </div>
+        <nav class="hidden md:flex space-x-6">
+            <!-- Navigasi utama -->
+            <a href="#home" class="text-gray-600 hover:text-brand-primary transition duration-300 font-medium">Beranda</a>
+            <a href="#products" class="text-gray-600 hover:text-brand-primary transition duration-300 font-medium">Produk</a>
+            <a href="#about" class="text-gray-600 hover:text-brand-primary transition duration-300 font-medium">Tentang Kami</a>
+            <a href="#contact" class="text-gray-600 hover:text-brand-primary transition duration-300 font-medium">Kontak</a>
+        </nav>
+        <!-- Tombol Burger Menu untuk Mobile -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-brand-primary focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+    </header>
+
+    <!-- Mobile Menu Overlay (akan diisi JavaScript) -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-600 hover:text-brand-primary focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <a href="#home" class="text-3xl font-bold text-gray-800 hover:text-brand-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Beranda</a>
+        <a href="#products" class="text-3xl font-bold text-gray-800 hover:text-brand-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Produk</a>
+        <a href="#about" class="text-3xl font-bold text-gray-800 hover:text-brand-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Tentang Kami</a>
+        <a href="#contact" class="text-3xl font-bold text-gray-800 hover:text-brand-primary transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Kontak</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gradient-to-r from-brand-light to-white py-20 md:py-32 flex items-center justify-center text-center overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-brand-secondary">
+                Special Moment <br class="hidden md:block"> Perfectly Package
+            </h1>
+            <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto">
+                Temukan koleksi totebag kami yang dirancang untuk kenyamanan dan gaya, ideal untuk setiap kesempatan.
+            </p>
+            <a href="#products" class="bg-brand-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-brand-secondary transition duration-300 transform hover:scale-105 inline-block shadow-lg">
+                Lihat Koleksi Kami
+            </a>
+        </div>
+        <!-- Latar belakang elemen visual sederhana, kini menggunakan gambar home-img.jpg -->
+        <div class="absolute inset-0 z-0">
+            <img src="images/home-img.jpg" alt="Background gambar totebag hitam" class="w-full h-full object-cover opacity-20">
+        </div>
+    </section>
+
+    <!-- Product Types Section -->
+    <section id="products" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-secondary">
+                Pilih Totebag Sesuai Gaya Anda
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+                <!-- Totebag Canvas -->
+                <div class="bg-brand-light p-8 rounded-xl shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300">
+                    <img src="images/product-img-1.jpg" alt="Gambar Totebag Canvas Hitam" class="w-full max-w-xs md:max-w-sm h-auto rounded-lg mb-6 transform hover:scale-102 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-brand-secondary">Totebag Canvas</h3>
+                    <p class="text-gray-700 mb-6 max-w-md">
+                        Terbuat dari bahan canvas berkualitas tinggi, totebag ini sangat kokoh, tahan lama, dan memiliki tekstur premium. Ideal untuk penggunaan sehari-hari yang stylish dan ramah lingkungan.
+                    </p>
+                    <a href="#" class="text-brand-primary border border-brand-primary px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition duration-300 font-medium">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+
+                <!-- Totebag Spunbond -->
+                <div class="bg-brand-light p-8 rounded-xl shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300">
+                    <img src="images/product-img-2.jpg" alt="Gambar Totebag Spunbond Putih" class="w-full max-w-xs md:max-w-sm h-auto rounded-lg mb-6 transform hover:scale-102 transition-transform duration-300">
+                    <h3 class="text-2xl font-semibold mb-4 text-brand-secondary">Totebag Spunbond</h3>
+                    <p class="text-gray-700 mb-6 max-w-md">
+                        Ringan dan ekonomis, totebag spunbond adalah pilihan sempurna untuk acara promosi, belanja, atau sebagai alternatif kantong plastik yang ramah lingkungan.
+                    </p>
+                    <a href="#" class="text-brand-primary border border-brand-primary px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition duration-300 font-medium">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Menambahkan bagian baru -->
+    <section id="about" class="py-16 md:py-24 bg-brand-light">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2">
+                <img src="images/about-img.jpg" alt="Gambar tangan memegang totebag spunbond" class="w-full h-auto rounded-xl shadow-lg">
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-brand-secondary">
+                    Tentang canVas
+                </h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Kami adalah canVas, penyedia totebag berkualitas tinggi dengan fokus pada desain minimalis dan fungsionalitas. Kami percaya bahwa gaya tidak harus mengorbankan keberlanjutan. Setiap produk kami dirancang untuk menemani aktivitas Anda sehari-hari dengan nyaman dan penuh gaya.
+                </p>
+                <p class="text-lg text-gray-700">
+                    Kami berkomitmen untuk menyediakan produk yang tidak hanya estetik tetapi juga ramah lingkungan, mendukung gaya hidup yang lebih sadar akan lingkungan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action / Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-brand-secondary text-center rounded-t-xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                Pesan Totebag Impian Anda Sekarang!
+            </h2>
+            <p class="text-lg md:text-xl text-brand-light mb-10 max-w-2xl mx-auto">
+                Kami siap membantu Anda mendapatkan totebag berkualitas tinggi yang sesuai dengan kebutuhan Anda.
+            </p>
+            <a href="mailto:info@canVas" class="bg-white text-brand-primary px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition duration-300 transform hover:scale-105 inline-block shadow-lg">
+                Hubungi Kami
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-white py-8 px-6 md:px-12 text-center rounded-b-lg">
+        <div class="container mx-auto">
+            <p class="text-brand-secondary">&copy; 2025 canVas. Semua Hak Dilindungi.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <!-- Placeholder untuk ikon media sosial -->
+                <a href="https://www.instagram.com/canvas.pol/" class="text-brand-secondary hover:text-brand-primary transition duration-300">
+                    <!-- <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646A4.19 4.19 0 0021.6 4c-.82.488-1.714.852-2.651 1.054A4.19 4.19 0 0014.16 3.013c-2.357 0-4.293 1.936-4.293 4.293 0 .33.038.653.112.965A12.298 12.298 0 013 5.405c-.381.675-.59 1.456-.59 2.306 0 2.927 1.944 5.377 4.502 6.252-.41.09-.84.15-1.285.15-.25 0-.49-.02-.72-.062.793 2.054 2.476 3.563 4.689 3.964-.19.16-.38.33-.58.48-.41.33-.87.5-1.35.5-1.32 0-2.43-.8-2.92-1.92A11.758 11.758 0 008.29 20.25z"></path></svg> -->
+                     <p class="text-brand-secondary">Instagram</p>
+                </a>
+                <a href="#" class="text-brand-secondary hover:text-brand-primary transition duration-300">
+                    <!-- <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.83 9.504.5.092.646-.217.646-.483 0-.237-.007-.866-.012-1.701-2.782.603-3.37-1.341-3.37-1.341-.454-1.157-1.11-1.463-1.11-1.463-.907-.618.069-.606.069-.606 1.002.073 1.529 1.03 1.529 1.03.892 1.526 2.341 1.084 2.91.829.091-.644.352-1.084.646-1.334-2.22-.253-4.555-1.113-4.555-4.953 0-1.095.391-1.986 1.03-2.693-.103-.253-.448-1.274.097-2.659 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.025 2.747-1.025.546 1.385.202 2.406.097 2.659.64.707 1.03 1.606 1.03 2.693 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.336-.012 2.418-.012 2.746 0 .269.144.578.652.483C19.137 20.198 22 16.442 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg> -->
+                    <p class="text-brand-secondary">Tokopedia</p>
+                </a>
+                <a href="#" class="text-brand-secondary hover:text-brand-primary transition duration-300">
+                    <!-- <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.83 9.504.5.092.646-.217.646-.483 0-.237-.007-.866-.012-1.701-2.782.603-3.37-1.341-3.37-1.341-.454-1.157-1.11-1.463-1.11-1.463-.907-.618.069-.606.069-.606 1.002.073 1.529 1.03 1.529 1.03.892 1.526 2.341 1.084 2.91.829.091-.644.352-1.084.646-1.334-2.22-.253-4.555-1.113-4.555-4.953 0-1.095.391-1.986 1.03-2.693-.103-.253-.448-1.274.097-2.659 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.025 2.747-1.025.546 1.385.202 2.406.097 2.659.64.707 1.03 1.606 1.03 2.693 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.336-.012 2.418-.012 2.746 0 .269.144.578.652.483C19.137 20.198 22 16.442 22 12.017 22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg> -->
+                    <p class="text-brand-secondary">TikTok</p>
+                </a>
+                <!-- Tambahkan ikon media sosial lainnya sesuai kebutuhan -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsionalitas Mobile Menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
